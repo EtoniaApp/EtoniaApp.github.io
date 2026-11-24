@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState, type FormEvent } from "react";
-import { Tonia, loopDurationMs, type ToniaLoop } from "./Tonia";
 import { Doodle, type DoodleKind } from "./Doodles";
 import styles from "./Waitlist.module.css";
 
@@ -101,38 +100,18 @@ export function WaitlistForm({ source, compact }: { source: string; compact?: bo
   );
 }
 
-/** Bottom call to action: Tonia pops up over the card and celebrates sign-ups. */
+/** Bottom call to action. Tonia (the guide) walks over and celebrates sign-ups. */
 export function WaitlistCard() {
-  const [loop, setLoop] = useState<ToniaLoop>("pop_out");
   const [party, setParty] = useState(0);
 
   useEffect(() => {
-    let t: number | undefined;
-    const on = () => {
-      setParty((n) => n + 1);
-      setLoop("hop");
-      window.clearTimeout(t);
-      t = window.setTimeout(() => setLoop("attend"), loopDurationMs("hop") * 3);
-    };
+    const on = () => setParty((n) => n + 1);
     window.addEventListener("etonia:joined", on);
-    return () => {
-      window.removeEventListener("etonia:joined", on);
-      window.clearTimeout(t);
-    };
+    return () => window.removeEventListener("etonia:joined", on);
   }, []);
 
   return (
-    <motion.div
-      className={styles.card}
-      onViewportEnter={() => {
-        setLoop("pop_out");
-        window.setTimeout(() => setLoop("attend"), loopDurationMs("pop_out"));
-      }}
-      viewport={{ once: true, amount: 0.5 }}
-    >
-      <div className={styles.perch} aria-hidden>
-        <Tonia loop={loop} loops={["pop_out", "attend", "hop"]} width={150} />
-      </div>
+    <div className={styles.card}>
       {party > 0 &&
         CONFETTI.map((k, i) => (
           <motion.span
@@ -152,6 +131,9 @@ export function WaitlistCard() {
             <Doodle kind={k} size={30} />
           </motion.span>
         ))}
+      <span className={styles.stamp} aria-hidden>
+        <Doodle kind="sprout" size={34} />
+      </span>
       <h2 className="section-title">Get early access.</h2>
       <p className={styles.sub}>
         Leave your email for a priority invite, and follow{" "}
@@ -161,6 +143,6 @@ export function WaitlistCard() {
         for Tonia's adventures.
       </p>
       <WaitlistForm source="etonia_io_footer" />
-    </motion.div>
+    </div>
   );
 }

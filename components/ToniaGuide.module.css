@@ -7,16 +7,24 @@
 }
 
 .guide {
-  --w: 132px;
+  --w: 150px;
   position: absolute;
-  bottom: 8px;
-  left: 20px;
+  bottom: 6px;
+  left: 0;
   width: var(--w);
   pointer-events: none;
 }
 
-.guide[data-side="right"] {
-  left: calc(100% - var(--w) - 20px);
+.guide[data-visible="false"] {
+  visibility: hidden;
+}
+
+.burst {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin: -15px 0 0 -15px;
+  pointer-events: none;
 }
 
 .tonia {
@@ -115,12 +123,8 @@
 
 @media (max-width: 720px) {
   .guide {
-    --w: 82px;
-    left: 8px;
+    --w: 92px;
     bottom: 4px;
-  }
-  .guide[data-side="right"] {
-    left: calc(100% - var(--w) - 8px);
   }
   .bubble {
     font-size: 13.5px;
@@ -128,12 +132,12 @@
     max-width: min(250px, calc(100vw - 110px));
   }
   .guide[data-side="right"] .bubble {
-    right: 62px;
-    bottom: 20px;
+    right: 64px;
+    bottom: 24px;
   }
   .guide[data-side="left"] .bubble {
-    left: 62px;
-    bottom: 20px;
+    left: 64px;
+    bottom: 24px;
   }
 }
 

@@ -1,5 +1,4 @@
 import screens from "@/lib/screens.json";
-import { ToniaHero } from "@/components/ToniaHero";
 import { AiPlot, LinkedReading } from "@/components/AiShowcase";
 import { StudyDesk } from "@/components/StudyDesk";
 import { Pricing } from "@/components/Pricing";
@@ -58,11 +57,25 @@ export default function Home() {
               </a>
             </Reveal>
           </div>
-          <div className={styles.heroArt}>
-            <ToniaHero />
-            <p className={styles.hint} aria-hidden>
-              psst… tap me!
-            </p>
+          <div className={styles.heroArt} aria-hidden>
+            <div className={styles.heroBlob} />
+            <Doodle kind="star" className={styles.hd1} />
+            <Doodle kind="squiggle" className={styles.hd2} />
+            <Doodle kind="heart" className={styles.hd3} />
+            <Doodle kind="sparkle" className={styles.hd4} />
+            <div className={styles.heroTablet}>
+              <img src="/screens/ai-after.webp" alt="" width={1600} height={1118} />
+            </div>
+            <div className={styles.heroPhone}>
+              <img src="/screens/phone-library.webp" alt="" width={640} height={1385} />
+            </div>
+            <div className={styles.heroSticky}>
+              Exam Friday!
+              <br />
+              <span>✓ derivatives</span>
+              <br />
+              <span>✓ vertex form</span>
+            </div>
           </div>
         </div>
       </section>

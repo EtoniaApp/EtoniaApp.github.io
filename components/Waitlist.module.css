@@ -60,7 +60,7 @@
   position: relative;
   max-width: 760px;
   margin: 0 auto;
-  padding: 72px clamp(20px, 5vw, 56px) 48px;
+  padding: 56px clamp(20px, 5vw, 56px) 48px;
   text-align: center;
   background: var(--surface);
   border: 2px solid var(--line);
@@ -71,14 +71,20 @@
   align-items: center;
 }
 
-.perch {
+
+.stamp {
   position: absolute;
-  /* the pop_out / attend frames are cut at Tonia's waist, so her
-     sprite's bottom edge sits on the card's top edge */
-  top: -172px;
+  top: -26px;
   left: 50%;
   translate: -50% 0;
-  pointer-events: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--mint);
+  border: 2px solid var(--line);
+  box-shadow: var(--sticker-sm);
 }
 
 .sub {
