@@ -1,0 +1,48 @@
+{
+  "frame": [
+    300,
+    353
+  ],
+  "loops": {
+    "look_around": {
+      "frames": 12,
+      "fps": 12
+    },
+    "think": {
+      "frames": 12,
+      "fps": 12
+    },
+    "hop": {
+      "frames": 12,
+      "fps": 12
+    },
+    "write": {
+      "frames": 12,
+      "fps": 12
+    },
+    "run": {
+      "frames": 12,
+      "fps": 12
+    },
+    "pop_out": {
+      "frames": 12,
+      "fps": 12
+    },
+    "attend": {
+      "frames": 12,
+      "fps": 12
+    },
+    "grade": {
+      "frames": 24,
+      "fps": 12
+    },
+    "pen_spin": {
+      "frames": 24,
+      "fps": 6
+    },
+    "walk": {
+      "frames": 24,
+      "fps": 12
+    }
+  }
+}

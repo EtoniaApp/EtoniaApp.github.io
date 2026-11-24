@@ -1,0 +1,111 @@
+.form {
+  width: 100%;
+  max-width: 480px;
+}
+
+.field {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sticker);
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.field:focus-within {
+  box-shadow:
+    0 0 0 4px var(--lavender),
+    var(--sticker);
+}
+
+.field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  color: var(--text);
+  padding: 0 12px;
+  outline: none;
+}
+
+.field input::placeholder {
+  color: var(--text-3);
+}
+
+.field input[aria-invalid="true"] {
+  color: var(--danger);
+}
+
+.ok,
+.err {
+  margin: 12px 4px 0;
+  font-size: 14px;
+}
+
+.ok {
+  color: var(--success);
+}
+
+.err {
+  color: var(--danger);
+}
+
+.card {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px clamp(20px, 5vw, 56px) 48px;
+  text-align: center;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--r-2xl);
+  box-shadow: 6px 6px 0 var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perch {
+  position: absolute;
+  /* the pop_out / attend frames are cut at Tonia's waist, so her
+     sprite's bottom edge sits on the card's top edge */
+  top: -172px;
+  left: 50%;
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+.sub {
+  color: var(--text-2);
+  margin: 12px 0 28px;
+  max-width: 46ch;
+}
+
+.sub a {
+  color: var(--brand-text);
+  font-weight: 500;
+}
+
+.confetti {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  margin-left: -15px;
+  pointer-events: none;
+}
+
+@media (max-width: 520px) {
+  .field {
+    flex-direction: column;
+    padding: 8px;
+  }
+  .field input {
+    height: 44px;
+  }
+}

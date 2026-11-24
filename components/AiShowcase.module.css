@@ -1,0 +1,267 @@
+.device {
+  position: relative;
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  box-shadow: 6px 6px 0 var(--line);
+  padding: clamp(6px, 1vw, 12px);
+}
+
+.device > img,
+.shot {
+  width: 100%;
+  height: auto;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--divider);
+  grid-area: 1 / 1;
+}
+
+.device {
+  display: grid;
+}
+
+/* ------------------------------------------------------------- plot */
+.plot {
+  display: grid;
+  gap: 28px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 6px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  box-shadow: var(--sticker-sm);
+  border-radius: var(--r-lg);
+  max-width: 760px;
+}
+
+.tab {
+  position: relative;
+  appearance: none;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--text-2);
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.tab > span {
+  position: relative;
+}
+
+.tab strong {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.tab small {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.pill {
+  position: absolute !important;
+  inset: 0;
+  background: var(--butter);
+  border-radius: var(--r-md);
+}
+
+.tabNum {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--brand-subtle);
+  color: var(--brand-text);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.tab[aria-selected="true"] .tabNum {
+  background: var(--brand);
+  color: var(--surface);
+}
+
+.peek {
+  position: absolute;
+  right: clamp(-10px, -1vw, 0px);
+  bottom: -26px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.thought {
+  margin-bottom: 120px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 16px 16px 4px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 var(--line);
+  color: var(--text);
+}
+
+/* --------------------------------------------------- linked reading */
+.linked {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) 1.5fr;
+  gap: clamp(24px, 5vw, 64px);
+  align-items: start;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 18vh 0;
+  display: grid;
+  gap: 22vh;
+}
+
+.step {
+  position: relative;
+  padding: 20px 22px 22px 22px;
+  border-radius: var(--r-lg);
+  border: 2px solid var(--line);
+  background: var(--surface);
+  cursor: pointer;
+  opacity: 0.5;
+  transition:
+    opacity 280ms ease,
+    box-shadow 280ms ease,
+    border-color 280ms ease,
+    transform 400ms var(--ease-smooth);
+}
+
+.step[data-active="true"] {
+  opacity: 1;
+  box-shadow: var(--sticker);
+  background: var(--butter);
+  transform: translateX(6px) rotate(-0.8deg);
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--pencil);
+  transform: scaleY(0);
+  transition: transform 400ms var(--ease-smooth);
+}
+
+.step[data-active="true"]::before {
+  transform: scaleY(1);
+}
+
+.step h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 8px 0 6px;
+}
+
+.step p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 15px;
+}
+
+.stepNum {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-text);
+  letter-spacing: 0.08em;
+}
+
+.stepNum::before {
+  content: "PARAGRAPH ";
+}
+
+.stickyCol {
+  height: 100%;
+}
+
+.sticky {
+  position: sticky;
+  top: calc(50vh - 260px);
+}
+
+.lookout {
+  position: absolute;
+  top: -78px;
+  right: 8%;
+  pointer-events: none;
+}
+
+.arrow {
+  position: absolute;
+  top: -40px;
+  left: -50px;
+  transform: rotate(10deg) scaleX(-1);
+}
+
+@media (max-width: 860px) {
+  .linked {
+    grid-template-columns: 1fr;
+  }
+  .stickyCol {
+    order: -1;
+    position: sticky;
+    top: 72px;
+    z-index: 2;
+    background: var(--lilac);
+    padding-bottom: 12px;
+  }
+  .sticky {
+    position: relative;
+    top: 0;
+  }
+  .lookout {
+    display: none;
+  }
+  .arrow {
+    display: none;
+  }
+  .steps {
+    padding: 4vh 0 30vh;
+    gap: 30vh;
+  }
+  .step[data-active="true"] {
+    transform: none;
+  }
+  .tabs {
+    grid-template-columns: 1fr;
+  }
+  .peek {
+    right: -4px;
+    bottom: -18px;
+  }
+  .peek > div:last-child {
+    width: 84px !important;
+  }
+  .thought {
+    margin-bottom: 78px;
+    font-size: 12.5px;
+  }
+}
